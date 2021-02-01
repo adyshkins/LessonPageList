@@ -27,6 +27,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Left" 
+                   Margin="20 0"
+                   VerticalAlignment="Center">
+
+            <TextBlock Text="Количество записей на странице  "/>
+            <ComboBox x:Name="cmbCountPeople" 
+                      SelectionChanged="cmbCountPeople_SelectionChanged"/>
+        </WrapPanel>
 
         <WrapPanel Grid.Row="3" 
                    HorizontalAlignment="Center"

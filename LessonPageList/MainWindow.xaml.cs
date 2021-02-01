@@ -25,14 +25,18 @@ namespace LessonPageList
         
         ObservableCollection<Person> listPerson = new ObservableCollection<Person>();
 
+        List<string> countPeopleList = new List<string>();
+
+        private int countPeople;
+
         int _numberPage = 0;
 
         private void GetList()
         {
             listPerson.Clear();
-            for (int i = _numberPage * 50; i < _numberPage * 50 + 50; i++)
+            for (int i = _numberPage * countPeople; i < _numberPage * countPeople + countPeople; i++)
             {
-                if (i < context.Person.Count())
+                if (i <= context.Person.Count())
                 {
                     listPerson.Add(context.Person.ToList()[i]);
                     LVPerson.ItemsSource = listPerson;
@@ -47,6 +51,16 @@ namespace LessonPageList
             InitializeComponent();
             
             GetList();
+
+            countPeopleList.Add("Все");
+            countPeopleList.Add("20");
+            countPeopleList.Add("50");
+            countPeopleList.Add("100");
+            cmbCountPeople.SelectedIndex = 0;
+            cmbCountPeople.ItemsSource = countPeopleList;
+
+            countPeople = context.Person.Count();
+
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -61,12 +75,42 @@ namespace LessonPageList
 
         private void btnNaxt_Click(object sender, RoutedEventArgs e)
         {
-            if ((_numberPage + 1) * 50 < context.Person.Count())
+            if ((_numberPage + 1) * countPeople < context.Person.Count())
             {
                 _numberPage++;
                 GetList();
             }
            
+        }
+
+        private void cmbCountPeople_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            switch (cmbCountPeople.SelectedIndex)
+            {
+                case 0:
+                    countPeople = context.Person.Count();
+                    break;
+
+                case 1:
+                    countPeople = 20;
+                    break;
+
+                case 2:
+                    countPeople = 50;
+                    break;
+
+                case 3:
+                    countPeople = 100;
+                    break;
+
+
+                default:
+                    countPeople = context.Person.Count();
+
+                    break;
+            }
+            GetList();
         }
     }
 }
