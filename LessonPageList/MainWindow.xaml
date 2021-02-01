@@ -31,6 +31,13 @@
         <WrapPanel Grid.Row="3" 
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center">
+            <TextBlock Text="Страница номер" 
+                       VerticalAlignment="Center"/>
+            
+            <TextBlock x:Name="txtNumberPage"
+                       VerticalAlignment="Center"
+                       Margin="10 0 100 0"/>
+            
             <Button Content="Предыдущая страница"
                     x:Name="btnBack"
                     Height="35"

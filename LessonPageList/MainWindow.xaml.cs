@@ -36,6 +36,7 @@ namespace LessonPageList
                 {
                     listPerson.Add(context.Person.ToList()[i]);
                     LVPerson.ItemsSource = listPerson;
+                    txtNumberPage.Text = (_numberPage + 1).ToString();
                 }
                
             }
