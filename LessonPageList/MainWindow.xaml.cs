@@ -90,27 +90,33 @@ namespace LessonPageList
             switch (cmbCountPeople.SelectedIndex)
             {
                 case 0:
+                    _numberPage = 0;
                     countPeople = context.Person.Count();
                     break;
 
                 case 1:
+                    _numberPage = 0;
                     countPeople = 20;
                     break;
 
                 case 2:
+                    _numberPage = 0;
                     countPeople = 50;
                     break;
 
                 case 3:
+                    _numberPage = 0;
                     countPeople = 100;
                     break;
 
 
                 default:
+                    _numberPage = 0;
                     countPeople = context.Person.Count();
 
                     break;
             }
+            
             GetList();
         }
     }
